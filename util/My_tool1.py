@@ -49,12 +49,12 @@ def findLastCheckpoint(save_dir):
     :return: номер последней эпохи или 0, если моделей нет
     """
     file_list = glob.glob(os.path.join(save_dir, 'model_*.pth'))
-    if file_list:  # модели существуют
+    if file_list:
         epochs_exist = []
         for file_ in file_list:
             result = re.findall(".*model_(.*).pth.*", file_)
             epochs_exist.append(int(result[0]))
-        initial_epoch = max(epochs_exist)  # последняя эпоха
+        initial_epoch = max(epochs_exist)
     else:
         initial_epoch = 0
     return initial_epoch
